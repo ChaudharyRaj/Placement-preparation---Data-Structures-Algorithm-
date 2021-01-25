@@ -1,10 +1,10 @@
 package heap;
 import java.util.*;
 
-class pair {
+class pairs{
 	 Integer key;
 	 Integer value;
-	public pair(Integer key,Integer value){
+	public pairs(Integer key,Integer value){
 		this.key = key;
 		this.value = value;
 	}
@@ -29,15 +29,15 @@ public class k_closest_elements {
 	
 	private static void sort(int[] arr, int k, int x){
 		
-		PriorityQueue<pair> maxh =  new PriorityQueue<pair>(new Comparator<pair>(){
+		PriorityQueue<pairs> maxh =  new PriorityQueue<pairs>(new Comparator<pairs>(){
 			@Override
-			public int compare(pair o1, pair o2) {
+			public int compare(pairs o1, pairs o2) {
 				return o2.getValue().compareTo(o1.getValue());
 			}
 		});
 		
 		for(int i = 0; i<k; i++){
-			maxh.add(new pair(arr[i],Math.abs(arr[i] - x)));
+			maxh.add(new pairs(arr[i],Math.abs(arr[i] - x)));
 		}
 		
 		for(int i =k; i<arr.length; i++){
@@ -45,7 +45,7 @@ public class k_closest_elements {
 			int diff = Math.abs(arr[i] - x);
 			if(diff > maxh.peek().getValue()) continue;
 			maxh.poll();
-			maxh.add(new pair(arr[i],diff));
+			maxh.add(new pairs(arr[i],diff));
 			
 		}
 		while(!maxh.isEmpty()){
@@ -57,8 +57,8 @@ public class k_closest_elements {
 	public static void main(String[] args){
 
 		int k = 3;
-		int x = 5;
-		int[] arr = {10, 2, 14, 4, 7, 6};
+		int x = 3;
+		int[] arr = {48,17,3,36,10,21,4};
 		sort(arr,k,x);	
 	}
 }
