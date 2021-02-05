@@ -20,7 +20,7 @@ public class Graph{
 	
 	/*function to add adage between two node*/
 	void addEdge(int start, int end){
-		adjMatrixl[start][end] = 1;
+		 
 		adjMatrixl[end][start] = 1;
 	}
 	
